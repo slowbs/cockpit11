@@ -78,7 +78,7 @@
 				// ถ้าตัวชี้วัด <= ให้แสดงลูกศรลงสีเขียว เพื่อบอกว่า ยิ่งน้อยยิ่งดี
 				 if(getsqldata('select success_type cc from kpi_head where kpi_id="'.$_GET[content].'"') == 1){
 					$x=1;
-					//echo $x;
+					echo $x;
 					 ?>
 					 <i class="fa fa-long-arrow-up"></i>
 					 <?
