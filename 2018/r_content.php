@@ -62,7 +62,7 @@
        <!--   graph-->
       <div class="col-md-12">
 	<div class="card">
-		<div class="card-header card-chart" data-background-color="purple">
+		<div class="card-header card-chart" data-background-color="white" style="background-color: #FFFFFF;">
 			
 			<div id="chartdiv"></div>	
 			
@@ -502,7 +502,9 @@ if($fs == 'f')
 <?
 $tg=getsqldata('select kpi_target cc from kpi_head where kpi_id="'.$_GET[content].'"');
 $i="";
-if($x == 1){?>
+if($x == 1){
+	$lineco = "green";
+	?>
 	<script>
 	AmCharts.addInitHandler(function(chart) {
 		// check if there are graphs with autoColor: true set
@@ -517,7 +519,7 @@ if($x == 1){?>
 			var color = chart.colors[x];
 			var f1 = chart.dataProvider[x].income;
 			var f2 = chart.dataProvider[x].expenses;
-			if(f1 > f2){
+			if(f1 >= f2){
 				//alert("yes")
 				  chart.dataProvider[x][colorKey] = "green";
 			}
@@ -536,6 +538,7 @@ if($x == 1){?>
 <?php
 }
 elseif ($x == 2){
+	$lineco = "red";
 	?>
 	<script>
 	AmCharts.addInitHandler(function(chart) {
@@ -559,6 +562,7 @@ elseif ($x == 2){
 				//alert("no")
 				chart.dataProvider[x][colorKey] = "red";
 			}
+			var fall += f1;
 			//alert(f1)
 	  
 			//chart.dataProvider[x][colorKey] = color;
@@ -627,6 +631,11 @@ elseif ($x == 2){
     "income": <? echo round("$total[00068]",2) ;?>,
     "expenses": <?="$tg";?>,
 	   "avg": <? echo round("$totalAll",2) ;?>
+},	   {
+    "province": "เขต",
+    "income": <? echo round("$totalAll",2) ;?>,
+    "expenses": <?="$tg";?>,
+	   "avg": <? echo round("$totalAll",2) ;?>
 	  
     
    
@@ -657,9 +666,10 @@ elseif ($x == 2){
     "bulletBorderThickness": 3,
     "fillAlphas": 0,
     "lineAlpha": 1,
+	"lineColor": "<?php echo $lineco ?>",
     "title": "เป้าหมาย",
     "valueField": "expenses",
-    "dashLengthField": "dashLengthLine"
+    "dashLengthField": "dashLengthLine",
   }, {
     "id": "graph3",
     "balloonText": "<span style='font-size:12px;'>[[title]] :<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
@@ -675,7 +685,7 @@ elseif ($x == 2){
     "title": "ค่าเฉลี่ยเขต",
     "valueField": "avg",
     "dashLengthField": "dashLengthLine",
-	  "lineColor":"white"
+	  "lineColor":"black"
   } ],
   "categoryField": "province",
   "categoryAxis": {
