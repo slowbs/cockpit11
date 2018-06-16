@@ -85,7 +85,7 @@
 				 }
 				if(getsqldata('select success_type cc from kpi_head where kpi_id="'.$_GET[content].'"') == 2){
 					$x=2;
-					//echo $x;
+					echo $x;
 					 ?>
 					 <i class="fa fa-long-arrow-down"></i>
 					 <?
@@ -521,11 +521,11 @@ if($x == 1){
 			var f2 = chart.dataProvider[x].expenses;
 			if(f1 >= f2){
 				//alert("yes")
-				  chart.dataProvider[x][colorKey] = "green";
+				  chart.dataProvider[x][colorKey] = "lime";
 			}
 			else{
 				//alert("no")
-				chart.dataProvider[x][colorKey] = "red";
+				chart.dataProvider[x][colorKey] = "#ff3333";
 			}
 			//alert(f1)
 	  
@@ -556,13 +556,12 @@ elseif ($x == 2){
 			var f2 = chart.dataProvider[x].expenses;
 			if(f1 < f2){
 				//alert("yes")
-				  chart.dataProvider[x][colorKey] = "green";
+				  chart.dataProvider[x][colorKey] = "lime";
 			}
 			else{
 				//alert("no")
-				chart.dataProvider[x][colorKey] = "red";
+				chart.dataProvider[x][colorKey] = "#ff3333";
 			}
-			var fall += f1;
 			//alert(f1)
 	  
 			//chart.dataProvider[x][colorKey] = color;
@@ -674,7 +673,7 @@ elseif ($x == 2){
     "id": "graph3",
     "balloonText": "<span style='font-size:12px;'>[[title]] :<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
     "bullet": "square",
-    "lineThickness": 1,
+    "lineThickness": 3,
     "bulletSize": 4,
     "bulletBorderAlpha": 1,
     "bulletColor": "#FFFF",
